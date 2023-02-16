@@ -1,0 +1,45 @@
+﻿@model List<Cigar>
+
+
+<strong>
+<h4>Your Favorites</h4>
+</strong>
+@using (Html.BeginForm("Favorites", "Cigar", "Post"))
+{
+<strong>
+<table 
+   style='border: 2px #000000 solid collapse; width: 115%' align='left'>
+   <tr>
+            <th>Favorite</th>
+            <th>Brand ID</th>
+            <th>Cigar ID</th>
+            <th>Name</th>
+            <th>Strength</th>
+            <th>Country</th>
+            <th>Wrapper</th>
+            <th>Filler</th>
+            <th>Color</th>
+            <th>Length</th>
+            <th>Ring Gauge</th>
+   </tr>
+    @foreach (var cigar in @Model)
+    {        
+            <tr>
+                <td><label @*asp-for="Favorite"*@ class="control-label"></label>
+                <input type="checkbox" name="Favorite" value="@cigar.Name"></td>
+                <td>@cigar.BrandId</td>
+                <td>@cigar.CigarId</td>
+                <td>@cigar.Name</td>
+                <td>@cigar.Strength</td>
+                <td>@cigar.Country</td>
+                <td>@cigar.Wrapper</td>
+                <td>@cigar.Filler</td>
+                <td>@cigar.Color</td>
+                <td>@cigar.Length</td>
+                <td>@cigar.RingGauge</td>
+            </tr>             
+    }
+</table>
+</strong>
+<br />
+}
