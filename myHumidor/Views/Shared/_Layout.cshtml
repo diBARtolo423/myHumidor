@@ -10,12 +10,12 @@
     <link rel="stylesheet" href="~/myHumidor.styles.css" asp-append-version="true" />
 </head>
 </strong>
-<div class="container-fluid" id="content" style="position: relative;">
-<div id="bodyMain">
-    <img class="cigarBackgroundImage"
-        src="/pics/Background1.jpg"
-        alt="">
 <body>
+    <div class="container-fluid" id="content" style="position: relative;">
+        <div id="bodyMain">
+            <img class="cigarBackgroundImage"
+                 src="/pics/Background1.jpg"
+                 alt="">
     <strong>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
@@ -51,7 +51,7 @@
             @RenderBody()
         </main>
     </div>
-
+        </div>
     <footer class="border-top footer text-muted">
         <div class="container">
             &copy; 2023 - myHumidor - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
@@ -62,5 +62,4 @@
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
-</div>
 </html>
