@@ -50,6 +50,11 @@ namespace myHumidor
             return searchResults;            
         }
 
+        public void AddFavorites(IEnumerable<int> favoriteIds)
+        {
+            // generate sql insert for each favorite ID
+        }
+
         public void UpdateFavorite(Cigar cigar)
         {
 

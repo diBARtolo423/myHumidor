@@ -1,45 +1,56 @@
 ﻿@model List<Cigar>
 
 
-<strong>
+
 <h4>Your Favorites</h4>
-</strong>
-@using (Html.BeginForm("Favorites", "Cigar", "Post"))
+@using (Html.BeginForm("Search", "Cigar", FormMethod.Get))
 {
-<strong>
-<table 
-   style='border: 2px #000000 solid collapse; width: 115%' align='left'>
-   <tr>
-            <th>Favorite</th>
-            <th>Brand ID</th>
-            <th>Cigar ID</th>
-            <th>Name</th>
-            <th>Strength</th>
-            <th>Country</th>
-            <th>Wrapper</th>
-            <th>Filler</th>
-            <th>Color</th>
-            <th>Length</th>
-            <th>Ring Gauge</th>
-   </tr>
-    @foreach (var cigar in @Model)
-    {        
-            <tr>
-                <td><label @*asp-for="Favorite"*@ class="control-label"></label>
-                <input type="checkbox" name="Favorite" value="@cigar.Name"></td>
-                <td>@cigar.BrandId</td>
-                <td>@cigar.CigarId</td>
-                <td>@cigar.Name</td>
-                <td>@cigar.Strength</td>
-                <td>@cigar.Country</td>
-                <td>@cigar.Wrapper</td>
-                <td>@cigar.Filler</td>
-                <td>@cigar.Color</td>
-                <td>@cigar.Length</td>
-                <td>@cigar.RingGauge</td>
-            </tr>             
-    }
-</table>
-</strong>
-<br />
+        <p>
+            Search for Cigar: @Html.TextBox("searchString")
+            <input type="submit" value="Search"/>
+        </p>
 }
+
+{@using (Html.BeginForm("UpdateFavoriteToIndex", "Cigar", FormMethod.Post))
+    {
+        <table style='font-weight: bold; border: 2px #000000 solid collapse; width: 110%' align='left'>
+            <tr>
+                <th></th>
+                <th></th>
+                <th style="padding: 0 10px;">Brand ID</th>
+                <th style="padding: 0 10px;">Cigar ID</th>
+                <th style="padding: 0 10px;">Name</th>
+                <th style="padding: 0 10px;">Strength</th>
+                <th style="padding: 0 10px;">Country</th>
+                <th style="padding: 0 10px;">Wrapper</th>
+                <th style="padding: 0 10px;">Filler</th>
+                <th style="padding: 0 10px;">Color</th>
+                <th style="padding: 0 10px;">Length</th>
+                <th style="padding: 0 10px;">Ring Gauge</th>
+            </tr>
+            @foreach (var cigar in @Model)
+            {
+                <tr>
+
+
+                    <td>
+                        <label asp-for="@cigar.Favorite" class="control-label"></label>
+                        <input type="checkbox" name="favorites" value="@cigar.CigarId" @(cigar.Favorite ? "checked": "")>
+                    </td>
+
+
+                    <td><input name="form" type="submit" value="Add" class="btn btn-primary" /></td>
+                    <td>@cigar.BrandId</td>
+                    <td>@cigar.CigarId</td>
+                    <td>@cigar.Name</td>
+                    <td>@cigar.Strength</td>
+                    <td>@cigar.Country</td>
+                    <td>@cigar.Wrapper</td>
+                    <td>@cigar.Filler</td>
+                    <td>@cigar.Color</td>
+                    <td>@cigar.Length</td>
+                    <td>@cigar.RingGauge</td>
+                </tr>
+            }
+        </table>
+    }

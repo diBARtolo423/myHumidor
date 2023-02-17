@@ -30,9 +30,9 @@ namespace myHumidor.Controllers
             return View(Cigar.Favorites);
         }
 
-        public IActionResult UpdateFavoriteToIndex(Cigar cigar)
+        public IActionResult UpdateFavoriteToIndex(IEnumerable<int> favorites)
         {
-            repo.UpdateFavorite(cigar);
+            repo.AddFavorites(favorites);
             return RedirectToAction("Favorites");
         }
     }
